@@ -78,7 +78,7 @@ The solution is an end-to-end pipeline that transforms raw packet captures into 
 
 The following figure sketches this pipeline on a conceptual level:
 
-![Pipeline overview](figures/pipeline_overview.png)
+![Pipeline overview](figures/pipeline_overview.jepg)
 
 *High-level pipeline: from raw PCAP files to model-ready features and evaluation. The actual implementation uses multiple scripts and QC steps to make this robust for large datasets.*
 
@@ -132,6 +132,18 @@ For this project, the modelling approach was structured in two layers:
    - Serialising flow information into a textual representation. 
    - Feeding this text into a small language model (SLM). 
    - Combining the SLM’s `<CLS>` embedding with the handcrafted feature vector for a joint representation.
+
+### High-level joint architecture
+
+The advanced setup combines a textual representation of each flow with handcrafted numeric features:
+
+![High-level joint architecture](figures/slm_handcrafted_architecture.jpeg)
+
+Conceptually:
+
+- Raw flow statistics are converted into a compact numeric feature vector.  
+- In parallel, a textual representation of the flow is encoded by a small language model (SLM); the final `<CLS>` embedding serves as the flow’s text representation.  
+- Both vectors are concatenated into a joint representation, which is then passed to a downstream classifier (e.g. a small MLP).
 
 ### Evaluation strategy
 
