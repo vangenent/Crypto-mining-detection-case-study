@@ -78,7 +78,7 @@ The solution is an end-to-end pipeline that transforms raw packet captures into 
 
 The following figure sketches this pipeline on a conceptual level:
 
-![Pipeline overview](figures/pipeline_overview.jepg)
+![Pipeline overview](figures/pipeline_overview.jpeg)
 
 *High-level pipeline: from raw PCAP files to model-ready features and evaluation. The actual implementation uses multiple scripts and QC steps to make this robust for large datasets.*
 
